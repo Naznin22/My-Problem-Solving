@@ -1,0 +1,51 @@
+class Solution {
+public:
+    bool ifequal(stack<char>st, stack<char>stt){
+    bool flag = true;
+    if(st.size()!=stt.size()) {
+        flag = false;
+        return flag;
+    }
+    while(!st.empty()){
+        if(st.top()==stt.top()){
+            st.pop();
+            stt.pop();
+        }
+        else{
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+    bool backspaceCompare(string s, string t) {
+        int len_s = s.length();
+        int len_t = t.length();
+
+        stack<char> st;
+        char c,ct;
+        for(int i=0;i<len_s;i++){
+            st.push(s[i]);
+            if(st.top()=='#'){
+               st.pop();
+               if(!st.empty())
+               st.pop();
+            }
+        }
+
+        stack<char> stt;
+        for(int i=0;i<len_t;i++){
+            stt.push(t[i]);
+            if(stt.top()=='#'){
+                stt.pop();
+                if(!stt.empty())
+                stt.pop();
+            }
+        }
+
+      
+       if(ifequal(st,stt)) return 1;
+       else return 0;
+        
+    }
+};
