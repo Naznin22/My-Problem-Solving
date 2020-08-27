@@ -1,0 +1,42 @@
+class MinStack {
+    stack<pair<int,int>> stck;
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+       
+        
+    }
+    
+    void push(int x) {
+        int min;
+        if(stck.empty()){
+            min = x;
+        }
+        else{
+            min = std::min(x, stck.top().second);
+        }
+        stck.push({x,min});
+        
+    }
+    
+    void pop() {
+        stck.pop();
+    }
+    
+    int top() {
+        return stck.top().first;
+    }
+    
+    int getMin() {
+        return stck.top().second;
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(x);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
