@@ -1,0 +1,25 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* NodeA = headA;
+        ListNode* NodeB = headB;
+        
+        while(NodeA != NodeB){
+            if(NodeA == NULL) NodeA = headB;
+            else  NodeA= NodeA->next;
+            if(NodeB == NULL) NodeB = headA;
+            else NodeB = NodeB->next;
+            //both of the pointers traverse the same distance. That's why they sync
+            // in the same point which is the intersection point
+        }
+        return NodeA;
+    }
+};
