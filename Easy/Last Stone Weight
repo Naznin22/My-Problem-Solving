@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+        make_heap(stones.begin(),stones.end()); //[first,last]
+        int ans;
+        int sz = stones.size();
+
+
+        while(stones.size()>1){
+        int f = stones.front();
+
+        if(stones.size()>0){
+        pop_heap(stones.begin(),stones.end());
+        stones.pop_back();
+        }
+
+        int s = stones.front();
+        if(stones.size()>0){
+        pop_heap(stones.begin(),stones.end());
+        stones.pop_back();
+        }
+
+        int d = f-s;
+
+        if(d>0){
+        stones.push_back(d); //push the element into vector
+        push_heap(stones.begin(),stones.end());
+        }
+         //reorder the heap
+        ans = stones.front();
+        }
+
+        if(!stones.empty()) return stones.front();
+        else return 0;
+    }
+};
