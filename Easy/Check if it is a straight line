@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+        int n = coordinates.size();
+        
+        long long area=0;
+        if(n==2) return 1;
+        else{
+            int j = n-1;
+            for(int i=0;i<n;i++ ){
+                area+= (coordinates[j][0]+coordinates[i][0]) * (coordinates[j][1]-coordinates[i][1]);
+                j=i;
+            }
+        }
+        //cout<<area<<endl;
+        if(area == 0) return 1;
+        else return 0;
+        
+    }
+};
