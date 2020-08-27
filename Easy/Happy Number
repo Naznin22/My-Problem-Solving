@@ -1,0 +1,44 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        int sum, sum1=0;
+
+    int f;
+
+
+    while(n!=0){
+        int digit1 = n%10;
+        sum1+= digit1*digit1;
+        n=n/10;
+
+    }
+    //cout <<"sum1" << sum1<<endl;
+    int p=sum1;
+
+    while(sum){
+        sum=0;
+    while(p!=0){
+        int digit = p%10;
+        sum+= digit*digit;
+        p=p/10;
+
+    }
+    p=sum;
+    if(sum==1){
+        //cout << "True"<<endl;
+        f=1;
+       
+        break;
+    }
+    else if(sum==2 || sum==3 || sum==4 || sum==6){
+        f=0;
+        
+        break;
+    }
+//cout <<"sum:" << sum<<endl;
+}
+
+    if(f==1) return 1;
+    else return 0;
+    }
+};
