@@ -1,0 +1,51 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int len = word.length();
+        char start = word[0];
+        int c=1;
+        if(islower(start)){
+            for(int i=1;i<len;i++){
+                if(isupper(word[i])){
+                    c=0;
+                    break;
+                }
+                else{
+                    c=1;
+                }
+            }
+        }
+        
+        else if(isupper(start)){
+            char sec = word[1];
+            if(isupper(sec)){
+                for(int i=2;i<len;i++){
+                    if(isupper(word[i])){
+                        c=1;
+                    }
+                    else{
+                        c=0;
+                        break;
+                    }
+                }
+            }
+            else{
+                for(int i=2;i<len;i++){
+                    if(islower(word[i])){
+                        c=1;
+                    }
+                    else{
+                        c=0;
+                        break;
+                    }
+                }
+            }
+            
+        }
+        
+        //cout<<c<<endl;
+        if(c==0) return 0;
+        return 1;
+        
+    }
+};
