@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string largestTimeFromDigits(vector<int>& A) {
+//         sort(A.begin(), A.end());
+//         string res="";
+        
+//         do{
+//             if((A[0] < 2 || (A[0] == 2 && A[1] < 4)) && A[2] < 6){
+//                 string temp = to_string(A[0])+to_string(A[1])+":"+to_string(A[2])+to_string(A[3]);
+//                 if(temp>res) res = temp;
+//                 // cout<<res;
+//             }
+//         }while(next_permutation(A.begin(),A.end())); //only do-while works bcz  nextpermut skips the initial perm
+        sort(A.begin(),A.end(), greater<int>());
+        string res="";
+        do{
+            int h = A[0]*10+A[1];
+            int m = A[2]*10+A[3];
+            if(h<24 && m<60)
+                return to_string(A[0])+to_string(A[1])+":"+to_string(A[2])+to_string(A[3]);
+        }while(prev_permutation(A.begin(),A.end()));
+        return res;
+    }
+};
