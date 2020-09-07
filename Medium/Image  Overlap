@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int shiftAndcount(int xshift, int yshift, vector<vector<int>>& M, vector<vector<int>>& R ){
+        int c = 0;
+        int rRow = 0;
+        // count the cells of ones in the overlapping zone.
+        for (int mRow = yshift; mRow < M.size(); mRow++) {
+            int rCol = 0;
+            for (int mCol = xshift; mCol < M.size(); mCol++) {
+                if (M[mRow][mCol] == 1 && M[mRow][mCol] == R[rRow][rCol])
+                    c++;
+                rCol++;
+            }
+            rRow++;
+        }
+        return c; 
+    }
+    
+    
+    int largestOverlap(vector<vector<int>>& A, vector<vector<int>>& B) {
+        int mx =0;
+        for(int yshift=0; yshift<A.size(); yshift++){
+            for(int xshift=0; xshift < A.size(); xshift++){
+                // move one of the matrice up and left and vice versa.
+                // (equivalent to move the other matrix down and right)
+                mx = max(mx, shiftAndcount(xshift,yshift,A,B));
+                mx = max(mx, shiftAndcount(xshift, yshift, B, A));
+            }
+        }
+        return mx;
+    }
+};
